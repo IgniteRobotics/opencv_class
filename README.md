@@ -203,7 +203,8 @@ greenUpper = (64, 255, 255)
 ### This is all jumbled up and wrong.  
 ### Can you fix it?
 
-### Some constants
+### Here are come constants you might need, but might not.
+- The settings are all from a logitech c920 camera.  How do you find the settings for the pi cam?
 ``` python
 #incoming image dimensions and FOV settings of a USB web cam.  NOT THE PI CAM.
 image_width = 640
@@ -221,6 +222,7 @@ V_FOCAL_LENGTH = image_height / (2*math.tan((verticalFOV/2)))
 ```
 
 ### Calculating Yaw.
+- If used right, it will return the angle between pixelX and centerX
 ```python
 def calculateYaw(pixelX, centerX, hFocalLength):
     yaw = math.degrees(math.atan((pixelX - centerX) / hFocalLength))
@@ -228,11 +230,12 @@ def calculateYaw(pixelX, centerX, hFocalLength):
 ```
 
 ### Using it.
-
+- What parameters should you pass in?
+- Where in the loop should you call this?
 ``` python
 target_angle = calculateYaw(x_target, mid_frame, H_FOCAL_LENGTH)
 
-cv2.putText(frame, "X Angle: " + "{:7.2f}".format(x_angle), (20, 20), cv2.FONT_HERSHEY_SIMPLEX,0.75, (255, 255, 255), thickness=2)
+cv2.putText(frame, "X Angle: " + "{:7.2f}".format(target_angle), (20, 20), cv2.FONT_HERSHEY_SIMPLEX,0.75, (255, 255, 255), thickness=2)
 ```
 
 
